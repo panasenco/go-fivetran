@@ -11,6 +11,7 @@ type ConnectorConfig struct {
 	clientID                         *string
 	clientSecret                     *string
 	technicalAccountID               *string
+	organization                     *string
 	organizationID                   *string
 	privateKey                       *string
 	syncMode                         *string
@@ -221,6 +222,7 @@ type connectorConfigRequest struct {
 	ClientID                         *string                                              `json:"client_id,omitempty"`
 	ClientSecret                     *string                                              `json:"client_secret,omitempty"`
 	TechnicalAccountID               *string                                              `json:"technical_account_id,omitempty"`
+	Organization                     *string                                              `json:"organization,omitempty"`
 	OrganizationID                   *string                                              `json:"organization_id,omitempty"`
 	PrivateKey                       *string                                              `json:"private_key,omitempty"`
 	SyncMode                         *string                                              `json:"sync_mode,omitempty"`
@@ -431,6 +433,7 @@ type ConnectorConfigResponse struct {
 	ClientID                         string                                               `json:"client_id"`
 	ClientSecret                     string                                               `json:"client_secret"`
 	TechnicalAccountID               string                                               `json:"technical_account_id"`
+	Organization                     string                                               `json:"organization"`
 	OrganizationID                   string                                               `json:"organization_id"`
 	PrivateKey                       string                                               `json:"private_key"`
 	SyncMode                         string                                               `json:"sync_mode"`
@@ -693,6 +696,7 @@ func (cc *ConnectorConfig) request() *connectorConfigRequest {
 		ClientID:                         cc.clientID,
 		ClientSecret:                     cc.clientSecret,
 		TechnicalAccountID:               cc.technicalAccountID,
+		Organization:                     cc.organization,
 		OrganizationID:                   cc.organizationID,
 		PrivateKey:                       cc.privateKey,
 		SyncMode:                         cc.syncMode,
@@ -927,6 +931,11 @@ func (cc *ConnectorConfig) ClientSecret(value string) *ConnectorConfig {
 
 func (cc *ConnectorConfig) TechnicalAccountID(value string) *ConnectorConfig {
 	cc.technicalAccountID = &value
+	return cc
+}
+
+func (cc *ConnectorConfig) Organization(value string) *ConnectorConfig {
+	cc.organization = &value
 	return cc
 }
 
