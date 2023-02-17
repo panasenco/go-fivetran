@@ -1,3 +1,3 @@
-module github.com/fivetran/go-fivetran
+module github.com/panasenco/go-fivetran
 
 go 1.19
